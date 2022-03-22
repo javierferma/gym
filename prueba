@@ -1,1 +1,77 @@
-sdsdds
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="{{ asset('js/all.js') }}"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Xoborg</title>
+</head>
+<body>
+    <div class="h-screen">
+        <header class="h-40 grid grid-cols-5 gap-8">
+            <div class="col-span-3">
+               <div class="flex items-center h-full justify-between">
+                   <div class="p-6">
+                        <img src="{{ asset('images/logo/logo.jpg') }}" width="180px" height="180px" alt="logo">
+                   </div>
+                   <div class="text-[#01D98F] flex gap-4">
+                       <div>
+                           <a class="hover:text-[#00bf7e] p-2.5"  href="#">Industry Verticals</a>
+                       </div>
+                        <div>
+                            <a class="hover:text-[#00bf7e] p-2.5" href="#">What We Do</a>
+                        </div>
+                   </div>
+               </div>
+            </div>
+            <div class="col-span-2 bg-[#01D98F]">
+                <div class="flex items-center h-full justify-between">
+                    <div class="text-[#01D98F] flex gap-4 ml-2">
+                        <div>
+                            <a class="text-white hover:text-gray-100 p-2.5" href="#">Industry Verticals</a>
+                        </div>
+                        <div>
+                            <a class="text-white hover:text-gray-100 p-2.5" href="#">What We Do</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="h-4/5 grid grid-cols-5 gap-8">
+            <div class="col-span-3 ">
+                <div class="w-3/4 p-8 ml-4">
+                    <h1 class="text-6xl font-thin mb-6 text-[#01D98F]">Lorem ipsum dolor sit amet.</h1>
+                    <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nibh libero, scelerisque ac dignissim vitae, maximus.</p>
+                </div>
+            </div>
+            <div class="col-span-2 bg-[#01D98F]">
+                <div class="h-2/3 w-full relative">
+                    <img class="object-cover absolute right-[20%] h-full" src="{{ asset('images/kz0PE3VTjHVgDwlSdjKMSak5N0EMIscRsVFWkaAR.jpg') }}" alt="imagen">
+                </div>
+            </div>
+        </div>
+        <footer class="h-1/5 flex">
+            <div class="h-32 wy-2/3 m-auto flex justify-center gap-8 p-6 overflow-auto">
+                @foreach($collaborators as $collaborator)
+                    <div class="h-full w-40 min-w-[160px]">
+                        <img class="h-full w-full object-cover" src="{{ asset('images/'.$collaborator->logo) }}" alt="{{ $collaborator->name }}">
+                    </div>
+                @endforeach
+            </div>
+        </footer>
+    </div>
+    <div class="h-screen mt-[100px]">
+        <div class="bg-blue-400">
+            TEXTO
+        </div>
+        <div class="bg-red-400">
+            PRODUCTOS
+        </div>
+        <div class="bg-orange-400">
+            BLOGS
+        </div>
+    </div>
+</body>
+</html>
