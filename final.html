@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script defer src="{{ asset('js/all.js') }}"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Xoborg</title>
+</head>
+<body>
+
+    <section class="h-screen snap-mandatory">
+        <header class="h-[15%] grid grid-cols-5 gap-8">
+            <div class="col-span-3">
+                <div class="flex items-center h-full justify-between">
+                    <div class="p-6">
+                        <img src="{{ asset('images/logo/logo.jpg') }}" width="180px" height="180px" alt="logo">
+                    </div>
+                    <div class="text-[#01D98F] flex gap-4">
+                        <div>
+                            <a class="hover:text-[#00bf7e] p-2.5"  href="#">Industry Verticals</a>
+                        </div>
+                        <div>
+                            <a class="hover:text-[#00bf7e] p-2.5" href="#">What We Do</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2 bg-[#01D98F]">
+                <div class="flex items-center h-full justify-between">
+                    <div class="text-[#01D98F] flex gap-4 ml-2">
+                        <div>
+                            <a class="text-white hover:text-gray-100 p-2.5" href="#">Industry Verticals</a>
+                        </div>
+                        <div>
+                            <a class="text-white hover:text-gray-100 p-2.5" href="#">What We Do</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="h-[70%] grid grid-cols-5 gap-8">
+            <div class="col-span-3 ">
+                <div class="w-3/4 p-8 ml-4">
+                    <h1 class="text-6xl font-thin mb-6 text-[#01D98F]">Lorem ipsum dolor sit amet.</h1>
+                    <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nibh libero, scelerisque ac dignissim vitae, maximus.</p>
+                </div>
+            </div>
+            <div class="col-span-2 bg-[#01D98F]">
+                <div class="h-2/3 w-full relative">
+                    <img class="object-cover absolute right-[6%] max-w-none h-full" src="{{ asset('images/kz0PE3VTjHVgDwlSdjKMSak5N0EMIscRsVFWkaAR.jpg') }}" alt="imagen">
+                </div>
+            </div>
+        </div>
+        <footer class="h-[15%] flex">
+            <div class="flex w-2/3 m-auto h-[75px] overflow-auto justify-center gap-8">
+                @foreach($collaborators as $collaborator)
+                    <div class="h-full min-w-[190px]">
+                        <img class="h-full w-full object-cover grayscale hover:grayscale-0" src="{{ asset('images/'.$collaborator->logo) }}" alt="{{ $collaborator->name }}">
+                    </div>
+                @endforeach
+            </div>
+        </footer>
+    </section>
+    <section class="h-screen snap-mandatory">
+        <div class="h-[45%]">
+            <div class="h-[30%]">
+                <div class="lg:p-16 md:p-6 p-2 md:flex h-full items-center">
+                    <h1 class="md:text-6xl text-4xl font-thin mb-2 md:mr-4 text-[#01D98F] w-full md:w-3/5">Meet our Products</h1>
+                    <p class="text-gray-400 md:text-base text-sm md:w-2/5 w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo justo felis, eu hendrerit justo efficitur in. Morbi quis nibh ac tortor tristique porttitor. Phasellus.</p>
+                </div>
+            </div>
+            <div class="h-[70%] bg-gray-200">
+            <!--    <div class="flex gap-8 w-full overflow-y-auto p-8">
+                    @foreach($products as $product)
+                        <div class="flex flex-col w-96 min-w-[22rem]">
+                            <div class="overflow-hidden h-52">
+                                <img src="{{ asset('images/'.$product->logo) }}" alt="logo" class="object-cover h-full w-full ">
+                            </div>
+                            <div class="h-2/5 p-3 pl-0 overflow-auto bg-white text-[#01D98F]">
+                                <div class="font-bold mb-2 uppercase">
+                                    {{ $product->name }}
+                                </div>
+                                <div class="text-gray-500 text-sm">
+                                    {{ $product->description }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div> -->
+            </div>
+        </div>
+        <div class="h-[55%] bg-[#01D98F] flex">
+            <div class="w-[45%]">
+                <div class=" mt-8 max-h-[80%] w-[90%] m-auto">
+                    <p class="mb-8 h-full uppercase text-gray-800">Último post</p>
+                    <div class="h-full">
+                        <h1 class="lg:text-4xl md:text-2xl text-xl font-light mb-2 text-white ">{{ $blogs[0]->title }}</h1>
+                        <a href="{{ route('blogs.show', $blogs[0]->id) }}" class="mb-2 inline-block text-gray-800 hover:text-gray-700 hover:text-[1.5rem] transition-ease-out duration-[.3s]"><i class="fa-solid fa-arrow-right"></i></a>
+                        <img class="object-cover max-h-[400px]  w-[500px]" src="{{ asset('images/'.$blogs[0]->image) }}" alt="imagen_blog">
+                    </div>
+                </div>
+            </div>
+            <div class="w-[55%]">
+                <div class="h-full p-16">
+                    <p class="mb-8 uppercase text-gray-800">Noticias</p>
+                    <div class="h-full flex flex-col gap-8 overflow-auto">
+                        @foreach($blogs->skip(1) as $blog)
+                            <div class="flex gap-16 items-center">
+                                <img class="w-[200px] object-cover h-[200px]" src="{{ asset('images/'.$blog->image) }}" alt="imagen_blog">
+                                <div>
+                                    <p class="text-white mb-2">{{ $blog->publish_in->format('d/m/Y') }}</p>
+                                    <a href="{{ route('blogs.show', $blog->id) }}" class="font-light text-white hover:text-gray-100">{{ $blog->title }}</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="h-screen snap-mandatory">
+       <header class="h-1/3 grid grid-cols-2 gap-8">
+           <div class="col-span-1 p-16">
+               <h1 class="text-6xl font-thin mb-6 text-[#01D98F]">Lorem ipsum dolor sit amet, consectetur.</h1>
+           </div>
+           <div class="p-16">
+               <div class="flex gap-12 py-2 overflow-auto mb-4 uppercase">
+                   <div>
+                       <a href="#" class="text-[#01D98F]">Sobre nosotros</a>
+                   </div>
+                   <div>
+                       <a href="#" class="text-gray-400 hover:text-[#01D98F]">Misión</a>
+                   </div>
+                   <div>
+                       <a href="#" class="text-gray-400 hover:text-[#01D98F]">Visión</a>
+                   </div>
+               </div>
+               <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pellentesque massa eleifend, maximus mauris vitae, congue erat. Nulla nec augue ut lectus rutrum aliquam ac at dolor. Maecenas blandit lobortis tellus sed accumsan. Proin lectus turpis, tempor sit amet malesuada at, porta vitae eros. In sodales imperdiet elit, sit amet.</p>
+           </div>
+       </header>
+        <div class="h-2/3 p-16 grid grid-cols-3 gap-16 auto-rows-[22rem]">
+            <div class="p-16">
+                <p class="uppercase text-[#01D98F] mb-4">Lorem ipsum dolor</p>
+                <i class="fa-solid fa-tv w-[120px] h-[120px] text-[#01D98F] mb-4"></i>
+                <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis gravida magna in augue finibus, vitae.</p>
+            </div>
+            <div class="col-span-2">
+                <img class="object-cover w-full h-full" src="{{ asset('images/kz0PE3VTjHVgDwlSdjKMSak5N0EMIscRsVFWkaAR.jpg') }}" alt="imagen">
+
+            </div>
+            <div class="p-16">
+                <p class="uppercase text-[#01D98F]">Lorem ipsum dolor</p>
+                <i class="fa-solid fa-tv w-[120px] h-[120px] text-[#01D98F]"></i>
+                <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis gravida magna in augue finibus, vitae.</p>
+            </div>
+            <div class="p-16">
+                <p class="uppercase text-[#01D98F]">Lorem ipsum dolor</p>
+                <i class="fa-solid fa-tv w-[120px] h-[120px] text-[#01D98F]"></i>
+                <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis gravida magna in augue finibus, vitae.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="bg-[#01D98F] h-20">
+            <div class="w-2/3 h-full m-auto flex justify-center gap-8 p-6 overflow-auto">
+                <a href="#" class="hover:text-[1.5rem] transition-ease-out duration-[.6s]"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+                <a href="#" class="hover:text-[1.5rem] transition-ease-out duration-[.6s]"><i class="fa-brands fa-facebook fa-xl"></i></a>
+                <a href="#" class="hover:text-[1.5rem] transition-ease-out duration-[.6s]"><i class="fa-brands fa-twitter fa-xl"></i></a>
+            </div>
+        </div>
+        <div class="bg-gray-800 h-96 p-16">
+            <div class="mb-8 text-center flex items-center justify-between mb-16">
+                <div>
+                    <p class="text-xl italic text-white">Made with <i class="fas fa-coffee"></i> in Spain</p>
+                </div>
+                <div>
+                    <img src="{{ asset('images/logo/logoFondoOscuro.png') }}" width="180px" height="180px" alt="logo">
+                </div>
+            </div>
+            <p class="text-white text-sm">© 2013 - 2022 Xoborg Technologies S.L. Todos los derechos reservados. Paseo Canalejas, 57-61 entre planta, oficina Num5, Salamanca 37001, Castilla y León, España.</p>
+        </div>
+    </section>
+</body>
+</html>
